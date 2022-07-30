@@ -1,0 +1,490 @@
+/*================================================================*\
+	General
+\*================================================================*/
+html,body { 
+	width: 100%;
+	height: 100%;
+}
+body {
+	font: 400 14px/20px 'FSAlbert', Arial, serif;
+	color: #000000;
+	position: relative;
+	left: 0;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.js body { overflow: hidden;}
+.center { text-align: center;}
+
+/* Lists
+==================================================*/
+#menu-toc,
+#section-wrap ul { 
+	list-style: none;
+	margin: 0; 
+	padding: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| #Header
+|--------------------------------------------------------------------------
+*/
+#header { background: #000000;}
+#header hr { 
+  border-color: rgba(255, 255, 255, 0.4);
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+#header .container { padding-bottom: 15px;}
+
+/*================================================================*\
+	Main Menu
+\*================================================================*/
+
+/* Toggle + buttons
+==================================================*/
+.menu-toggle,
+#bb-nav-prev,
+#bb-nav-next,
+#drop-cat,
+#subscribe-header a {
+	border-radius: 50px;
+	border: 1px solid #FFF;
+	display: inline-block;
+	font-size: 18px;
+	line-height: 44px;
+	margin: 6px 8px 0 0;
+	text-align: center;
+	width: 44px;
+	color: #FFF;
+}
+.menu-toggle.active,
+.menu-toggle:hover,
+#bb-nav-prev:hover,
+#bb-nav-next:hover,
+#drop-cat:hover,
+nav.open #drop-cat,
+#search:hover button,
+#subscribe-header a:hover { 
+	cursor: pointer;
+	background: rgba(255, 255, 255, 0.2);
+	border-color: rgba(255, 255, 255, 0.2);
+	color: #FFF;
+}
+
+/* Menu
+==================================================*/
+#menu-panel {
+	background: #F1EFEC;
+	position: fixed;
+	width: 240px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+	left: -240px;
+	-webkit-box-shadow:0px -1px 3px 1px rgba(0, 0, 0, 0.15) inset;
+	box-shadow: 0px -1px 3px 1px rgba(0, 0, 0, 0.15) inset;
+}
+.js #menu-panel {
+	position: absolute;
+	left: -240px;
+}
+#menu-panel h3 {
+	font-size: 1.8em;
+	padding: 20px;
+	font-weight: 300;
+} 
+
+/* Menu links */
+#menu-toc li a {
+	display: block;
+	font-size: 1.1em;
+	font-weight: 300;
+	padding: 1em;
+	color: #667279;
+}
+
+#menu-toc li a:hover { 
+	color: #FFF; 
+	background: #CC0000;
+	text-decoration: none;
+}
+/* Sub */
+#menu-toc ul ul a { padding-left: 3em;}
+
+/* Push */
+.menu-push-right { left: 240px;}
+body, .menu-push-right { 
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+/* Cat dropdown */
+#menu-cat li.active a {
+	color: #FFF;
+	text-decoration: none;
+	background-color: #C00;
+}
+
+/* Title
+==================================================*/
+#title a {
+	font-family: 'FSAlbert', Arial, serif;
+	line-height: 52px;
+  font-size: 18px;
+	margin: 0;
+	font-weight: 300;
+	color: #FFF;
+}
+#title a:hover {text-decoration: none;}
+#title-sub {
+	font-family: 'FSAlbert', Arial, serif;
+	margin: 0;
+	font-weight: 300;
+	font-size: 32px;
+	line-height: 48px;
+	color: #FFF;
+  text-transform: uppercase;
+}
+
+/* Sections
+==================================================*/
+#section-wrap {
+  background: #333;
+  color: #999;
+  height: 300px;
+  overflow-y: scroll;
+}
+#section-wrap ul {
+  padding: 15px;
+  width: 100%;
+}
+#section-wrap ul li {
+  border-bottom: 1px solid #5C5C5C;
+  padding: 10px 0;
+}
+#section-wrap ul li:last-child {border-bottom: none;}
+#section-wrap ul li a {
+  font-size: 18px;
+  color: #FFF;
+}
+/*
+|--------------------------------------------------------------------------
+| #Main
+|--------------------------------------------------------------------------
+*/ 
+
+/* Tip loader
+==================================================*/
+#init-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+  color: #FFF;
+  padding: 25px 0;
+}
+.keyboard-controls i,
+.click-n-drag i,
+.tut-arrows i {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/*================================================================*\
+	Bread n' Butter - Flip(ping) Effect
+\*================================================================*/
+#bb-container,
+.bb-custom-wrapper,
+.bb-bookblock {
+	width: 100%;
+	height: 100vh;
+}
+
+#bb-container {
+	position: relative;
+	left: 0px;
+	-webkit-transition: left 0.3s ease-in-out;
+	-o-transition: left 0.3s ease-in-out;
+	transition: left 0.3s ease-in-out;
+}
+
+.js .content {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 100%;
+	bottom: 50px;
+	overflow: hidden;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.js .content:before,
+.js .content:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	z-index: 100;
+	pointer-events: none;
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.js .content:after {
+	top: auto;
+	bottom: 15px;
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+/* Content Flip Style */
+.bb-bookblock {
+	position: relative;
+	background: #fff;
+	z-index: 100;
+}
+
+.bb-page {
+	width: 50%;
+	height: 100%;
+	left: 50%;
+	position: absolute;
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transform-origin: left center;
+	-moz-transform-origin: left center;
+	-o-transform-origin: left center;
+	-ms-transform-origin: left center;
+	transform-origin: left center;
+}
+
+.bb-page > div,
+.bb-outer,
+.bb-content {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.bb-content {
+	background: #fff;
+}
+
+.bb-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.bb-overlay, .bb-outer {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.bb-page > div {
+	width: 100%;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.bb-back {
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	-o-transform: rotateY(-180deg);
+	-ms-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+
+.bb-outer {
+	width: 100%;
+	overflow: hidden;
+	z-index: 999;
+}
+
+.bb-overlay, 
+.bb-flipoverlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 1000;
+}
+
+.bb-flipoverlay {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bb-bookblock > div.bb-page:first-child,
+.bb-bookblock > div.bb-page:first-child .bb-back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.js .bb-item {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	background: #fff;
+}
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+
+/* Custom Style */
+
+.jspContainer {
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane {
+	position: absolute;
+	width: 100% !important;
+	left: 0 !important;
+}
+
+.jspVerticalBar {
+	position: absolute;
+	top: 0px;
+	right: 2px;
+	width: 9px;
+	height: 100%;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+}
+
+.jspContainer:hover .jspVerticalBar {
+	opacity: 1;
+}
+
+.jspCap {
+	display: block;
+	background: #fff;
+}
+
+.jspVerticalBar .jspCap {
+	height: 40px;
+}
+
+.jspTrack {
+	background: rgba(242,242,242,0.5);
+	box-shadow: inset 0 0 1px rgba(0,0,0,0.1), inset 1px 0 4px rgba(0,0,0,0.05);
+	border-radius: 10px;
+	position: relative;
+}
+
+.jspDrag {
+	background: #fff;
+	position: relative;
+	box-shadow: inset -1px 0 8px rgba(0,0,0,0.05);
+	top: 0;
+	left: 0;
+	border-radius: 5px;
+	border: 1px solid #f0f0f0;
+	cursor: pointer;
+}
+
+.jspCorner {
+	background: #fff;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner {
+	margin: 0 -3px 0 0;
+}
+
+/* Content */
+.content .row { 
+	border-top: 1px solid #F2F2F2;
+	display: table;
+}
+.content .row:first-child { border-top: none;}
+.content .row [class^="col-"] { 
+	border-left: 1px solid #F2F2F2;
+	display: table-cell;
+	height: 100%;
+	vertical-align: top;
+	float: none;
+	padding-top: 15px;
+}
+.content .row [class^="col-"]:first-child { border-left: none;}
+.entry-content span {
+	display: block;
+	font-size: 10px;
+	font-weight: 300;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #74726F;
+}
+.entry-content figure { margin-bottom: 13px;} 
+.entry-content h2 {
+	margin: 0;
+	font-size: 18px;
+}
+.entry-content p {
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+	font-family: FSAlbert;
+	font-size: 16px;
+	line-height: 20px;
+	display: block;
+	position: relative;
+	padding-bottom: 30px;
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
